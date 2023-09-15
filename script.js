@@ -160,5 +160,3 @@ myFitnessBtn.addEventListener('click', () => {
   displayMyFitness();
   toggleDisplay('none', 'none', 'none', 'block');
 })
-
-

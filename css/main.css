@@ -128,3 +128,11 @@ hr {
 
 .myFitness {
   display: none; }
+
+@media (max-width: 800px) {
+  .workouts {
+    grid-template-columns: repeat(3, 1fr); } }
+
+@media (max-width: 500px) {
+  .workouts {
+    grid-template-columns: repeat(1, 1fr); } }
