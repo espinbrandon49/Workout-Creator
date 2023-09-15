@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <title>Workout Creator</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Workout Creator</h1>
+    <form class="form" id="form">
+      <input type="text" id="form-input" class="form-input" placeholder="Search for body part or muscle" />
+      <button type="submit" class="form-button"><i class="fas fa-search"></i></button>
+
+    </form>
+    <button class="myFitness-button" id="myFitnessBtn">
+      <!-- <i class="fas fa-random"></i> -->
+      MyFitness
+    </button>
+    <div id="results-heading" class="results-heading"></div>
+    <div id="singleWorkout"></div>
+    <a href="#singleWorkout">
+      <div id="workouts" class="workouts"></div>
+    </a>
+    <div id="myFitness" class="myFitness"></div>
+  </div>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
