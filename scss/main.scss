@@ -5,7 +5,7 @@
   --color-black: #070606;
   --color-primary: #d3ab55;
   --color-secondary: #bbb;
-  --font-josefinSans: "Josefin Sans", sans-serif;
+  // --font-josefinSans: "Josefin Sans", sans-serif;
   --font-nunito: "Nunito", sans-serif;
 }
 
@@ -166,13 +166,34 @@ hr {
   display: none;
 }
 
-@media(max-width: 800px) {
+footer {
+  z-index: 1000;
+  text-align: center;
+  font-size: 0.5rem;
+
+  width: 100%;
+  padding-bottom: 1rem;
+
+  a {
+    text-decoration: none;
+    color: var(--color-black);
+    opacity: 0.5;
+    transition: 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+      font-size: 105%;
+    }
+  }
+}
+
+@media (max-width: 800px) {
   .workouts {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   .workouts {
     grid-template-columns: repeat(1, 1fr);
   }

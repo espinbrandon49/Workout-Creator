@@ -78,6 +78,7 @@ function displayMyFitness() {
   })
 }
 
+// Helpers
 function displayOneWorkout(results) {
   return (
     `

@@ -4,7 +4,6 @@
   --color-black: #070606;
   --color-primary: #d3ab55;
   --color-secondary: #bbb;
-  --font-josefinSans: "Josefin Sans", sans-serif;
   --font-nunito: "Nunito", sans-serif; }
 
 * {
@@ -128,6 +127,21 @@ hr {
 
 .myFitness {
   display: none; }
+
+footer {
+  z-index: 1000;
+  text-align: center;
+  font-size: 0.5rem;
+  width: 100%;
+  padding-bottom: 1rem; }
+  footer a {
+    text-decoration: none;
+    color: var(--color-black);
+    opacity: 0.5;
+    transition: 0.3s; }
+    footer a:hover {
+      opacity: 0.9;
+      font-size: 105%; }
 
 @media (max-width: 800px) {
   .workouts {
