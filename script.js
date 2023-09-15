@@ -5,27 +5,7 @@ const submit = document.getElementById('form'),
   singleWorkout = document.getElementById('singleWorkout'),
   myFitnessDiv = document.getElementById("myFitness"),
   myFitnessBtn = document.getElementById('myFitnessBtn');
-
 let myFitness = JSON.parse(localStorage.getItem('myFitness')) || [];
-
-function setMyFitness() {
-  localStorage.setItem('myFitness', JSON.stringify(myFitness));
-};
-
-// TODO ADD VALIDATION SO THAT THERE ARE NO DUPLICATES
-function addFitness(object) {
-  if (!localStorage.myFitness) setMyFitness();
-  let newObject = object.split(",");
-  let newWorkout = {
-    name: newObject[0],
-    bodyPart: newObject[2],
-    equipment: newObject[3],
-    gifUrl: newObject[1],
-    target: newObject[4]
-  }
-  myFitness.push(newWorkout);
-  setMyFitness();
-};
 
 async function getWorkoutsBySearch(e) {
   e.preventDefault();
@@ -89,7 +69,17 @@ function displayWorkouts(results) {
 };
 
 function displaySingleWorkout(results) {
-  singleWorkout.innerHTML =
+  singleWorkout.innerHTML = displayOneWorkout(results);
+};
+
+function displayMyFitness() {
+  myFitnessDiv.innerHTML = myFitness.map((results) => {
+    return displayOneWorkout(results);
+  })
+}
+
+function displayOneWorkout(results) {
+  return (
     `
     <hr />
     <div class="singleWorkout" data-workoutID="${[results.name, results.gifUrl, results.bodyPart, results.equipment, results.target]}">
@@ -102,25 +92,39 @@ function displaySingleWorkout(results) {
       </div>
     </div>
     `
+  )
 };
 
-function displayMyFitness() {
-  myFitnessDiv.innerHTML = myFitness.map((result) => {
-    return (
-      `
-    <div class="singleWorkout" data-workoutID="${result.id}">
-      <h2 class="singleWorkout-heading">${result.name}</h2>
-      <img class="singleWorkout-img" src="${result.gifUrl}" alt="${result.name}"/>
-      <div class="singleWorkout-info">
-        <p class="singleWorkout-info-p">${result.bodyPart}</p>
-        <p class="singleWorkout-info-p">${result.equipment}</p>
-        <p class="singleWorkout-info-p">${result.target}</p>
-      </div>
-    </div>
-    `
-    )
-  })
-}
+function addFitness(object) {
+  if (!localStorage.myFitness) {
+    localStorage.setItem('myFitness', JSON.stringify(myFitness));
+  }
+
+  let newObject = object.split(",");
+  let newWorkout = {
+    name: newObject[0],
+    bodyPart: newObject[2],
+    equipment: newObject[3],
+    gifUrl: newObject[1],
+    target: newObject[4]
+  }
+
+  const checkArray = myFitness.map(e => e.name)
+  if (!checkArray.includes(newWorkout.name)) {
+    myFitness.push(newWorkout);
+    Toastify({
+      text: "Exercise has been added!",
+      duration: 3000
+    }).showToast();
+  } else (
+    Toastify({
+      text: "You already added this exercise!",
+      duration: 3000
+    }).showToast()
+  )
+
+  localStorage.setItem('myFitness', JSON.stringify(myFitness));
+};
 
 function workoutInfo(func, e, data) {
   const workoutInfo = e
@@ -128,50 +132,33 @@ function workoutInfo(func, e, data) {
     .find((item) => item.classList.contains(`${data}`))
     .getAttribute('data-workoutID');
 
-    func(workoutInfo)
+  func(workoutInfo)
+};
+
+function toggleDisplay(a, b, c, d) {
+  resultsHeading.style.display = a;
+  workouts.style.display = b;
+  singleWorkout.style.display = c;
+  myFitnessDiv.style.display = d;
 }
 
 // Event Listeners
 submit.addEventListener('submit', (e) => {
   getWorkoutsBySearch(e);
-  resultsHeading.style.display = 'block';
-  workouts.style.display = 'grid';
-  singleWorkout.style.display = 'block';
-  myFitnessDiv.style.display = 'none';
+  toggleDisplay('block', 'grid', 'block', 'none');
 });
 
 workouts.addEventListener('click', e => {
-  // const workoutInfo = e
-  //   .composedPath()
-  //   .find((item) => item.classList.contains('workouts-workout-info'))
-  //   .getAttribute('data-workoutID');
-
-  // getWorkoutByID(workoutInfo);
   workoutInfo(getWorkoutByID, e, "workouts-workout-info")
 });
 
 singleWorkout.addEventListener('click', e => {
-  // const workoutInfo = e
-  //   .composedPath()
-  //   .find((item) => item.classList.contains('singleWorkout'))
-  //   .getAttribute('data-workoutID');
-
-  // addFitness(workoutInfo);
-
   workoutInfo(addFitness, e, "singleWorkout")
-
-  Toastify({
-    text: "Exercise has been added!",
-    duration: 3000
-  }).showToast();
 })
 
 myFitnessBtn.addEventListener('click', () => {
   displayMyFitness();
-  resultsHeading.style.display = 'none';
-  workouts.style.display = 'none';
-  singleWorkout.style.display = 'none';
-  myFitnessDiv.style.display = 'block';
+  toggleDisplay('none', 'none', 'none', 'block');
 })
 
 
