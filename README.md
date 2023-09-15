@@ -1,10 +1,12 @@
 # Workout Creator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) 
+
+![](	https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![](	https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white) ![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![](	https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Description 
-This is an application to find exercies to create a fitness workout routine.  I used the [ExerciseDB(https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/details)] API to return the exercises.  
+This is an application to find exercies to create a fitness workout routine.  I used the [ExerciseDB](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/details) API to return the exercises.  
 
 Basically one can search for a body part or muscle group such as "pectorals" or "chest" and receive a number of exercises with a gif showing how to do the exercise correctly.  
 
@@ -19,7 +21,7 @@ Hopefully you enjoy this application and can use it to research or create an exe
 * HTML, SASS, CSS, JavaScript, AJAX (Fetch API), Toastify
 
 ## Demo
-[![Demo Video](./relaxation-journal/src/images/VideoScreenshot.png)](https://user-images.githubusercontent.com/102924713/236932547-3c218ea9-5a8a-46fb-aa0e-d962ca9fb1b0.mp4)
+[![Demo Video](./images/Workout-Creator.gif)]
 
 ## License 
 ### MIT License 
